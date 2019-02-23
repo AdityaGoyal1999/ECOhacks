@@ -15,7 +15,16 @@ class Activity:
     tip: tips regarding the activity that is going on
     act_date: the date since the user has been maintaining the streak
     """
-    pass
+    def __init__(self, n: name) -> None:
+        """ Initializes the class Activity.
+        """
+        self.name = n
+        self.act_date = datetime.now()
+
+    def generate_a_tip(self) -> str:
+        """ Generates a tip for the user to be printed for the particular tip.
+        """
+        pass
 
 
 class StreakManager:
@@ -53,7 +62,7 @@ class StreakManager:
         It updates the dates for every day
 
         * Mutates the self._streaks
-        
+
         Precondition: this function is called everyday
         """
         for i in self._streaks:
@@ -63,3 +72,7 @@ class StreakManager:
                 i[1] += 1
             else:
                 i[1] = 0
+
+
+if '__main__' == __name__:
+    pass
