@@ -106,6 +106,9 @@ class EcoPoints:
         else:
             pass
 
+    def get_points(self):
+        """ Get the points that the user has generated."""
+        return self.points
 
 if '__main__' == __name__:
     pass

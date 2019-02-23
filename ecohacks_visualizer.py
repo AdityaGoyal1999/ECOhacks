@@ -1,29 +1,11 @@
 """ The interactive visualizer for the Ecohacks2019.
 """
 from tkinter import *
-from Ecohacks import Activity, StreakManager
+from Ecohacks import Activity, StreakManager, EcoPoints
 import pygame
-# import tkMessageBox
 
 
-# class Visualizer:
-#     """
-#     === Public Attributes ===
-#     r: the tkinter object for the visual interface of the program
-#     """
-#     def __init__(self) -> None:
-#         """Initialize this visualization.
-#         """
-#         self.r = Tk()
-
-# def func():
-#     top = tkinter.Tk()
-#
-#
-# if "__main__" == __name__:
-#     func()
-
-class MyFirstGUI:
+class Visualizer:
     """
 
     """
@@ -34,7 +16,7 @@ class MyFirstGUI:
         self.label = Label(master, text="Welcome to EcoBro")
         self.label.pack()
 
-        self.greet_button = Button(master, text="EcoPoints Calculator", command=self.greet)
+        self.greet_button = Button(master, text="EcoPoints Calculator", command=self.points)
         self.greet_button.pack()
 
         self.close_button = Button(master, text="Eco Streaks", command=self.personal_streaks)
@@ -44,16 +26,25 @@ class MyFirstGUI:
         self.exit_button.pack()
         self.streaks = StreakManager()
 
-    def greet(self):
+    def points(self):
         print("Welcome to EcoPoints generator.")
         new_root = Tk()
         label = Label(new_root, text="Welcome to the EcoPoints generates.")
         label.pack()
-        # var = StringVar()
-        # print("This is the second window")
-        # var.set("Welcome to your step of saving the environment.")
-        # label = Message(new_root, textvariable=var, relief=RAISED)
-        # label.pack()
+        e = EcoPoints()
+        new_root1 = Tk()
+        label1 = Label(new_root1, text="Enter the type of waste you have discarded properly.")
+        label1.pack()
+        w = StringVar()
+        var = Entry(new_root1, text="Enter waste type", textvariable=w)
+        var.pack()
+        e.add_points(w)
+
+        new_root2 = Tk()
+        label = Label(new_root2, text=str(e.get_points()))
+        label.pack()
+        new_root2.mainloop()
+        new_root1.mainloop()
         new_root.mainloop()
 
     def create_activity(self) -> None:
@@ -66,6 +57,7 @@ class MyFirstGUI:
         e = Entry(new_root, text="Enter an activity", textvariable=w)
         e.pack()
         self.streaks.add_activity(w.get())
+        new_root.mainloop()
 
     def personal_streaks(self):
         """ Manages the streaks.
