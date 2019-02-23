@@ -9,7 +9,7 @@ keyword = input("Search for something.")
 
 google = "https://google.com/"
 syntax = "search?q="
-path = "ECOhacks/keywords - Sheet1.csv"
+path = "ECOhacks/keywords - Sheet1.csv" # TODO Change this pathname to the current location of Sheet1.csv on downloading
 
 sustainable_list = []
 with open(path) as file:
