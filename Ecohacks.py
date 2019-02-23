@@ -6,6 +6,7 @@ from datetime import date
 from datetime import datetime
 from datetime import timedelta
 
+
 class Activity:
     """ The every day activities that the user has created for helping out the
     environment.
@@ -15,7 +16,7 @@ class Activity:
     tip: tips regarding the activity that is going on
     act_date: the date since the user has been maintaining the streak
     """
-    def __init__(self, n: name) -> None:
+    def __init__(self, n: str) -> None:
         """ Initializes the class Activity.
         """
         self.name = n
@@ -37,7 +38,7 @@ class StreakManager:
     today: the current date.
     """
     _streaks: dict
-    today
+    today: datetime.date
 
     def __init__(self) -> None:
         """ Initializes the class.
@@ -72,6 +73,38 @@ class StreakManager:
                 i[1] += 1
             else:
                 i[1] = 0
+
+
+class EcoPoints:
+    """ Calculates the EcoPoints that the user has.
+
+    ===Attributes===
+    points: the eco points that the user has.
+    """
+    points: int
+
+    def __init__(self) -> None:
+        """ Initializes the class.
+        """
+        self.points = 0
+
+    def add_points(self, garbage_type: str) -> None:
+        """ Adds the points.
+
+        garbage types-
+
+        REUSABLE
+        DEGRADABLE
+        NON-DEGRADABLE
+        """
+        if garbage_type == "REUSABLE":
+            self.points += 15
+        elif garbage_type == "DEGRADABLE":
+            self.points += 5
+        elif garbage_type == "NON-DEGRADABLE":
+            self.points += 5
+        else:
+            pass
 
 
 if '__main__' == __name__:
