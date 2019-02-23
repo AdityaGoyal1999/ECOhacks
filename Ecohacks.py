@@ -33,23 +33,23 @@ class StreakManager:
     add to his check list system.
 
     === Attributes ===
-    _streaks: dict for the activity and the number of days that the user has
+    streaks: dict for the activity and the number of days that the user has
         completed. The value is [date, days for the streak.
     today: the current date.
     """
-    _streaks: dict
+    streaks: dict
     today: datetime.date
 
     def __init__(self) -> None:
         """ Initializes the class.
         """
-        self._streaks = {}
+        self.streaks = {}
         d = datetime.now()
         self.today = date(d.year, d.month, d.day)
 
     def add_activity(self, a: Activity) -> None:
         """ Adds the activity to the main dictionary"""
-        self._streaks[a] = [self.today, 0]
+        self.streaks[a] = [self.today, 0]
 
     def update_today(self) -> None:
         """ Updates the date of the whole system.
@@ -62,11 +62,11 @@ class StreakManager:
         dictionary.
         It updates the dates for every day
 
-        * Mutates the self._streaks
+        * Mutates the self.streaks
 
         Precondition: this function is called everyday
         """
-        for i in self._streaks:
+        for i in self.streaks:
             new_date = self.today + timedelta(days=-1)
             # in a continuous streak
             if i[1] == new_date:
