@@ -1,14 +1,19 @@
 {
-    "name": "Eco",
+    "name": "EcoSearch",
     "version": "1.0",
     "description": "Get eco friendly tips based on your searches.",
-    "permissions": ["tabs"],
+    "permissions": ["tabs", "notifications"],
     "background": {
       "scripts": ["background.js"],
       "persistent": false
     },
-    "page_action": {
-      "default_popup": "popup.html"
+    "icons": { "16": "icon16.png",
+           "48": "icon48.png",
+          "128": "icon128.png" },
+    "browser_action": {
+      "name": "EcoSearch",
+      "default_icon": "icon128.png",
+      "default_popup":"popup.html"
     },
     "manifest_version": 2
 }
